@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.alangomez.robofix.classes;
 
-/**
- *
- * @author alangomez
- */
 public class EscanerAntiguo {
-    
+    public String ejecutarEscaneo(String codigoRobot){
+        if (codigoRobot.equals("RX-01")){
+            return "RX-01|BATERIA|CRITICO|15";
+        }
+        
+        return codigoRobot + "|SISTEMA|NORMAL|0";
+    }
 }
