@@ -1,6 +1,7 @@
 package com.alangomez.robofix;
 
 import com.alangomez.robofix.classes.*;
+import com.alangomez.robofix.util.Menu;
 import java.util.Scanner;
 
 public class Main {
@@ -12,18 +13,15 @@ public class Main {
         Taller taller1 = new Taller();
         Taller taller2 = new Taller();
         
+        System.out.println(taller1);
+        System.out.println(taller2);
+        
+        
         int opcion = 0;
         
         while (opcion != 7){
-            System.out.println("\n===== ROBOFIX =====");
-            System.out.println("1. Ver robot");
-            System.out.println("2. Diagnosticar robot");
-            System.out.println("3. Reparar robot");
-            System.out.println("4. Cambiar configuración");
-            System.out.println("5. Ver inventario");
-            System.out.println("6. Comparar inventario");
-            System.out.println("7. Salir");
-            System.out.print("Opcion: ");
+            
+            Menu.mostrarMenu();
             
             opcion = teclado.nextInt();
             teclado.nextLine();
@@ -50,13 +48,16 @@ public class Main {
                     robot.setModo(modo);
                     System.out.println("Configuración actualizada...");
                     break;
+                    
                 case 5:
                     taller1.mostrarInvetario();
                     break;
                 case 6:
+                    System.out.println("======================");
                     System.out.println("Inventario taller 1:");
                     taller1.mostrarInvetario();
                     
+                    System.out.println("======================");
                     System.out.println("Inventario taller 2:");
                     taller2.mostrarInvetario();
                     break;
