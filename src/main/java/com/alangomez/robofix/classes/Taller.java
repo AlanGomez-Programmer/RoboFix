@@ -1,13 +1,15 @@
 package com.alangomez.robofix.classes;
 
+import com.alangomez.robofix.classes.adapters.adaptadorEscanerAntiguo;
+
 public class Taller {
-    // cada taller crea su porpio inventario.
-    private Inventario inventario = new Inventario();
-    
-    private EscanerAntiguo escaner = new EscanerAntiguo();
+    // Centralización de inventario 
+    private Inventario inventario = Inventario.getInstancia();
+    // Adaptación de, escaner antiguo al nuevo
+    private adaptadorEscanerAntiguo escaner = new adaptadorEscanerAntiguo(new EscanerAntiguo());
     
     public void diagnosticar(Robot robot){
-        String resultado = escaner.ejecutarEscaneo(robot.getCodigo());
+        String resultado = escaner.ejecutarEscaneo(robot);
         
         String[] datos = resultado.split("\\|");
         
@@ -19,16 +21,23 @@ public class Taller {
     }
     
     public void reparar(Robot robot){
-        String resultado = escaner.ejecutarEscaneo(robot.getCodigo());
+        boolean tieneEnergia = robot.getEnergia() > 0;
         
-        String[] datos = resultado.split("\\|");
-        String repuesto = datos[1];
+        if (!tieneEnergia){
+            robot.setEnergia(0);
+            System.out.println("Lo sentimos, ya no tienes energía");
+        } else {
+            String resultado = escaner.ejecutarEscaneo(robot);
         
-        inventario.descontar(repuesto, 1);
-       
-        robot.setEnergia(robot.getEnergia() - 20);
+            String[] datos = resultado.split("\\|");
+            String repuesto = datos[1];
+            inventario.descontar(repuesto, 1);
+            
+            robot.setEnergia(robot.getEnergia() - 20);
+            System.out.println("Robot reparado correctamente");
+        }
         
-        System.out.println("Robot reparado correctamente");
+        
     }
     
     public void mostrarInvetario(){
