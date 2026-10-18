@@ -1,7 +1,6 @@
 package com.alangomez.robofix.memory;
 
-import com.alangomez.robofix.classes.ModoOperacion;
-import com.alangomez.robofix.classes.Robot;
+import com.alangomez.robofix.classes.*;
 import java.util.Objects;
 
 public final class Configuracion {

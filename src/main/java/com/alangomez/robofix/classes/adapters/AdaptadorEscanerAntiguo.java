@@ -1,8 +1,6 @@
 package com.alangomez.robofix.classes.adapters;
 
-import com.alangomez.robofix.classes.Diagnostico;
-import com.alangomez.robofix.classes.EscanerAntiguo;
-import com.alangomez.robofix.classes.Robot;
+import com.alangomez.robofix.classes.*;
 import com.alangomez.robofix.interfaces.EscanerExterno;
 import java.util.Objects;
 
